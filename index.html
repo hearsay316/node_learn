@@ -6,60 +6,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Title</title>
     <style>
-        *{
-            margin: 0px;
-            padding: 0px;
-        }
-        .wrap {
-            width: 600px;
-            height: 600px;
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-            background: #92b922;
-        }
-        .test {
-            background: #de3168;
-            display: inline-block;
-            color: #fff;
-            padding: 20px;
-        }
-        @media (-webkit-device-pixel-ratio: 2) {
-            .test{
-                width: 0.5px;
-            }
-        }
+
     </style>
 
 </head>
-<body>
+<body style="position: relative">
+<div>11</div>
+<!--<div class="title">新闻</div>-->
+<!--<span class="title">新闻</span>-->
 
-    <!--<div class="title">新闻</div>-->
-    <!--<span class="title">新闻</span>-->
 
-
-    <div class="wrap">
-        <div class="test">
-            水平垂直居中了吧<br>
-            两行文字哦
-        </div>
-    </div>
-<div class="test" >
+<div style="position: fixed;background-color: red;transform: translate(-50%,-50%);top: 50%;
+    left: 50%;">
     dede
 </div>
-
-<script>
-
-   let  a1= 37049546.83
-   let  a2=   777804.00
-   let  a3= 13467251.15
-    let a=  16112903.48;
-    let b=   770852.00;
-    let c=  5609124.71;
-    let d = a+b+c;
-    let a4 = a1+a2+a3
-    console.log(a4);
-    console.log(window.devicePixelRatio);
+<script type="module">
+import {a} from './demo.js'
+    console.log(a);
 </script>
 </body>
 </html>

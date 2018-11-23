@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式</title>
+    <style>
+        body{
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        .login-layer {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 0, 0, .6);
+            text-align: center;
+            line-height: 200px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<button id="loginBtn">登录</button>
+<button id="quitBtn">登录</button>
+</body>
+
+<script>
+
+    class SingletonService {
+        static getInstance(show){
+            if(!this.instances){
+                this.instances = new SingletonService();
+            }else {
+                show ? this.instances.style.display = 'none':this.instances.style.display = 'block'
+            }
+            return this.instances;
+        }
+
+        constructor(){
+            var div = document.createElement('div');
+            div.innerHTML = '我是登录浮窗';
+            div.classList.add('login-layer');
+            div.style.display = 'block';
+            document.body.appendChild(div);
+            return div;
+        }
+    }
+
+  let  loginBtn = document.querySelector('#loginBtn');
+    loginBtn.addEventListener('click',function (event) {
+        let div =  SingletonService.getInstance()
+        console.log(event);
+    })
+
+    let  quitBtn = document.querySelector('#quitBtn');
+    quitBtn.addEventListener('click',function (event) {
+        let div =  SingletonService.getInstance("none")
+        console.log(event);
+    })
+
+
+
+
+
+
+</script>
+</html>
