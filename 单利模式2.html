@@ -10,19 +10,28 @@
             height: 100vh;
         }
         .login-layer {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 200px;
-            height: 200px;
-            background-color: rgba(0, 0, 0, .6);
+            position: fixed;
             text-align: center;
-            line-height: 200px;
-            display: inline-block;
+            min-width: 120px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ebeef5;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            background-color: #edf2fc;
+            transition: all 0.5s ease-in;
+            overflow: hidden;
+            padding: 15px 15px 15px 20px;
+            display: flex;
+            align-items: center;
+            opacity:0
         }
+        .login-layer.move
+        {
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -33,34 +42,54 @@
 <script>
 
     class SingletonService {
-        static getInstance(show){
+        static getInstance({show,timer}){
             if(!this.instances){
-                this.instances = new SingletonService();
+                this.instances = new SingletonService(show);
             }else {
-                show ? this.instances.style.display = 'none':this.instances.style.display = 'block'
+                this.instances.style.display = 'block'
             }
+            this.show(timer);
             return this.instances;
         }
-
-        constructor(){
+        static  show(timer){
+            this.instances.classList.add('move');
+            this.time&&clearTimeout(this.time);
+            this.time = setTimeout(()=>{
+                this.instances.classList.remove('move')
+                this.nono&&clearTimeout(this.nono);
+                this.nono = setTimeout(()=>{
+                    this.instances.style.display = 'none';
+                },500)
+            },timer)
+        }
+        constructor(show){
             var div = document.createElement('div');
-            div.innerHTML = '我是登录浮窗';
+            div.innerHTML =  `
+           <div class="son">${show}</div>
+            `;
             div.classList.add('login-layer');
             div.style.display = 'block';
             document.body.appendChild(div);
             return div;
         }
     }
+    let met=({show,timer})=>SingletonService.getInstance({
+        show,timer
+    })
 
   let  loginBtn = document.querySelector('#loginBtn');
     loginBtn.addEventListener('click',function (event) {
-        let div =  SingletonService.getInstance()
+        met({
+            show:"成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功",
+            timer:500
+        })
+
         console.log(event);
     })
 
     let  quitBtn = document.querySelector('#quitBtn');
     quitBtn.addEventListener('click',function (event) {
-        let div =  SingletonService.getInstance("none")
+        let div =  SingletonService.getInstance(300)
         console.log(event);
     })
 
