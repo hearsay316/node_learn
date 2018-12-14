@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+ <div v-for="value,index in arr" :key="index">
+     <input type="text" :value="value" @input="add($event,value,index)" >
+     <div :ref=`value${index}`></div>
+ </div>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            arr:[1,2,3,4,5,6,7]
+        },methods:{
+            add(event,value,index){
+                console.log(event.target.value);
+                console.log(this.$refs[`value${index}`]);
+                if(event.target.value.length===0){
+                    this.$refs[`value${index}`][0].innerHTML= "不能为空"
+                }else if(event.target.value.length<0) {
+                    this.$refs[`value${index}`][0].innerHTML= ""
+                }
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

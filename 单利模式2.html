@@ -1,0 +1,102 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式</title>
+    <style>
+        body{
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        .login-layer {
+            position: fixed;
+            text-align: center;
+            min-width: 120px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ebeef5;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            background-color: #edf2fc;
+            transition: all 0.5s ease-in;
+            overflow: hidden;
+            padding: 15px 15px 15px 20px;
+            display: flex;
+            align-items: center;
+            opacity:0
+        }
+        .login-layer.move
+        {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+<button id="loginBtn">登录</button>
+<button id="quitBtn">登录</button>
+</body>
+
+<script>
+
+    class SingletonService {
+        static getInstance({show,timer}){
+            if(!this.instances){
+                this.instances = new SingletonService(show);
+            }else {
+                this.instances.style.display = 'block'
+            }
+            this.show(timer);
+            return this.instances;
+        }
+        static  show(timer){
+            this.instances.classList.add('move');
+            this.time&&clearTimeout(this.time);
+            this.time = setTimeout(()=>{
+                this.instances.classList.remove('move')
+                this.nono&&clearTimeout(this.nono);
+                this.nono = setTimeout(()=>{
+                    this.instances.style.display = 'none';
+                },500)
+            },timer)
+        }
+        constructor(show){
+            var div = document.createElement('div');
+            div.innerHTML =  `
+           <div class="son">${show}</div>
+            `;
+            div.classList.add('login-layer');
+            div.style.display = 'block';
+            document.body.appendChild(div);
+            return div;
+        }
+    }
+    let met=({show,timer})=>SingletonService.getInstance({
+        show,timer
+    })
+
+  let  loginBtn = document.querySelector('#loginBtn');
+    loginBtn.addEventListener('click',function (event) {
+        met({
+            show:"成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功",
+            timer:500
+        })
+
+        console.log(event);
+    })
+
+    let  quitBtn = document.querySelector('#quitBtn');
+    quitBtn.addEventListener('click',function (event) {
+        let div =  SingletonService.getInstance(300)
+        console.log(event);
+    })
+
+
+
+
+
+
+</script>
+</html>

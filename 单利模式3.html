@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单例实现登录弹窗</title>
+    <style>
+        body{
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        .login-layer {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 0, 0, .6);
+            text-align: center;
+            line-height: 200px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<button id="loginBtn">登录</button>
+<script>
+    const btn = document.getElementById('loginBtn');
+    btn.addEventListener('click', function() {
+        loginLayer.getInstance();
+    }, false);
+
+    class loginLayer {
+        constructor() {
+           // this.instance = null;
+            this.init();
+        }
+        init() {
+            var div = document.createElement('div');
+            div.classList.add('login-layer');
+            div.innerHTML = "我是登录浮窗";
+            document.body.appendChild(div);
+        }
+        static getInstance() {
+            if(!this.instance) {
+                this.instance = new loginLayer();
+            }
+            return this.instance;
+        }
+    }
+</script>
+</body>
+</html>
