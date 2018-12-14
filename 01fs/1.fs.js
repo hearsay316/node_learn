@@ -15,12 +15,12 @@ const fs = require('fs');
 //        console.log('成功'+data);
 //     }
 // })
-fs.open('./1.txt','r',0o666,(err,fd)=>{
+fs.open('./1.txt', 'r', 0o666, (err, fd) => {
     console.log(fd);
     let buff = Buffer.alloc(4);
-    fs.read(fd,buff,0,3,1,function (err,bytesRead,buffer) {
-        console.log(buff.toString(),111);
-        fs.read(fd,buff,3,3,1,function (err,bytesRead,buffer) {
+    fs.read(fd, buff, 0, 3, 1, function (err, bytesRead, buffer) {
+        console.log(buff.toString(), 111);
+        fs.read(fd, buff, 3, 3, 1, function (err, bytesRead, buffer) {
             console.log(buff.toString());
         })
     })

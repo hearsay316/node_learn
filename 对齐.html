@@ -6,25 +6,35 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Title</title>
     <style>
-        *{
+        * {
             margin: 0px;
             padding: 0px;
         }
-        ul{
+
+        ul {
             display: flex;
             height: 500px;
             width: 100%;
-            list-style:none;
+            list-style: none;
 
         }
-        .one{
+
+        .one {
             justify-self: center;
         }
-        .two{
+
+        .two {
             align-content: flex-end;
         }
-        .conterion{
 
+        .conterion {
+
+        }
+
+        .张立群 {
+            width: 100px;
+            height: 100px;
+            background: red;
         }
     </style>
 
@@ -32,15 +42,54 @@
 <body>
 
 <!--<div class="box1">-->
-    <!--<span class="item1">熟悉熟悉</span>-->
+<!--<span class="item1">熟悉熟悉</span>-->
 <!--</div>-->
 
 
-<div class="conterion">
+<div>
 
 </div>
+
+<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
 <script>
-    console.log(window.devicePixelRatio);
+    axios.get('https://bird.ioliu.cn/v1?url=https://unsplash.com/napi/search/collections?page=1&per_page=20&query=%E5%AE%B6').then((res) => {
+        console.log(res);
+    }).catch((error) => {
+        console.log(error);
+    });
+
+
+    function Person(name) {
+        this.name = name;
+    }
+
+
+    Person.prototype.setHello = function () {
+        alert(this.name)
+    };
+    function bb() {
+        console.log()
+    }
+    function cc() {
+        console.log()
+    }
+
+    const dd = {
+        a: Symbol(5),
+        b: 222
+    };
+let l= Symbol(5);
+    console.log(dd.a.toString() === l.toString());
+    console.log(JSON.stringify(dd.a));
+
+    function f(a) {
+    return a;
+}
+
+    let s = f('a');
+    console.log(s);
+
+
 </script>
 </body>
 </html>

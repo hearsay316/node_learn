@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        body{
+            font-size: 16px;
+        }
+        .child{
+            width: 40rem;
+            height: 20rem;
+            margin: 5rem 0.5rem;
+            border: 1px solid red;
+            float: left;
+        }
+        .clearfix::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+    </style>
+    <script>
+        var apgeWidth = window.innerWidth;
+        document.write('<style>html{font-size: '+apgeWidth/100+'px;}</style>')
+    </script>
+</head>
+<body>
+<div class="parent clearfix">
+    <div class="child">box</div>
+    <div class="child">box</div>
+    <div class="child">box</div>
+    <div class="child">box</div>
+</div>
+</body>
+</html>

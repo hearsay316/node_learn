@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<script src="./three.js"></script>
+<script>
+    const scere = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,1000);
+    var rederer = new THREE.WebGLRenderer();
+    rederer.setClearColor('#ffffff');
+    rederer.setSize(window.innerWidth,window.innerHeight);
+    document.body.appendChild(rederer.domElement);
+    var geometry  = new THREE.CubeGeometry(2,2,2);
+    var material = new THREE.MeshBasicMaterial({color:0xff0000});
+    var cube = new THREE.Mesh(geometry,material);
+    scere.add(cube);
+    camera.position.z=5;
+    function render() {
+        requestAnimationFrame(render)
+       // cube.rotation.x+=0.01;
+        cube.rotation.y+=0.01;
+        cube.rotation.z+=0.01;
+        rederer.render(scere,camera)
+    }
+    render();
+    console.log(window.innerWidth);
+
+</script>
+</body>
+</html>

@@ -5,61 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Title</title>
-    <style>
-        *{
-            margin: 0px;
-            padding: 0px;
-        }
-        .wrap {
-            width: 600px;
-            height: 600px;
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-            background: #92b922;
-        }
-        .test {
-            background: #de3168;
-            display: inline-block;
-            color: #fff;
-            padding: 20px;
-        }
-        @media (-webkit-device-pixel-ratio: 2) {
-            .test{
-                width: 0.5px;
-            }
-        }
-    </style>
-
 </head>
 <body>
 
-    <!--<div class="title">新闻</div>-->
-    <!--<span class="title">新闻</span>-->
-
-
-    <div class="wrap">
-        <div class="test">
-            水平垂直居中了吧<br>
-            两行文字哦
-        </div>
-    </div>
-<div class="test" >
-    dede
+<div id="APP" ref="app">
+    <template>
+        <el-select
+                v-model="value10"
+                multiple
+                filterable
+                allow-create
+                default-first-option
+                placeholder="请选择文章标签">
+            <el-option
+                    v-for="item in options5"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+            </el-option>
+        </el-select>
+    </template>
+    <input type="text">
+    <input type="text">
+    <input type="text">
 </div>
-
+<!-- 引入样式 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script>
-
-   let  a1= 37049546.83
-   let  a2=   777804.00
-   let  a3= 13467251.15
-    let a=  16112903.48;
-    let b=   770852.00;
-    let c=  5609124.71;
-    let d = a+b+c;
-    let a4 = a1+a2+a3
-    console.log(a4);
-    console.log(window.devicePixelRatio);
+    const app = new Vue({
+        el: '#APP',
+        data() {
+            return {
+                options5: [{
+                    value: 'HTML',
+                    label: 'HTML'
+                }, {
+                    value: 'CSS',
+                    label: 'CSS'
+                }, {
+                    value: 'JavaScript',
+                    label: 'JavaScript'
+                }],
+                value10: []
+            }
+        }, methods: {
+            inputes() {
+                let inputes = this.$refs.app.getElementsByTagName('input');
+                for (let i = 0; i < inputes.length; i++) {
+                    inputes[i].addEventListener('keyup', function ($event) {
+                        if ($event.keyCode == 13) {
+                            if (i + 1 == inputes.length) {
+                                inputes[0].focus();
+                            } else {
+                                inputes[i + 1].focus();
+                            }
+                        }
+                    })
+                }
+            }
+        },
+        mounted() {
+            this.inputes();
+        }
+    })
 </script>
 </body>
 </html>
