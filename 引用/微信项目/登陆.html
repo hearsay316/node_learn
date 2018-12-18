@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, \\5FAE\8F6F\96C5\9ED1, Arial, sans-serif;
+        }
+
+        button, input {
+            background-color: #f2f2f2;
+            font-family: 微软雅黑;
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        #app {
+            max-width: 750px;
+            height: 100vh;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        .z-form {
+            width: calc(100% - 30px);
+            margin: 0 auto;
+        }
+
+        .form-header {
+            padding: 75px 0 15px 0;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .z-group {
+            position: relative;
+            margin-bottom: 2px;
+        }
+
+        .outline {
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        .bg-outline {
+            background-color: #cccccc;
+        }
+
+        .z-form-inp:focus {
+            border: none;
+            outline: none;
+            background-color: #f2f2f2;
+        }
+
+        .clear-fix::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .z-form-lab {
+            display: inline-block;
+            width: 75px;
+            vertical-align: middle;
+            text-align: left;
+        }
+
+        .z-form-lab, .z-form-inp {
+            float: left;
+            line-height: 35px;
+            padding: 5px 0;
+            font-size: 14px;
+            border: none;
+            letter-spacing: 1px;
+        }
+
+        input::placeholder {
+            color: #a3a3a3;
+            font-size: 14px;
+            background-color: #f2f2f2;
+        }
+
+        .foot {
+            position: fixed;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+        }
+
+        .z-box {
+            text-align: center;
+        }
+
+        .z-box > a {
+            color: cornflowerblue;
+        }
+
+        .btn-box {
+            margin-top: 25px;
+        }
+
+        .btn {
+            width: calc(100% - 30px);
+            line-height: 32px;
+            padding: 4px 0;
+            color: #ffffff;
+            background: #06BD03;
+            border-radius: 5px;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+        .btn:hover {
+            background-color: #4CAF50;
+        }
+        .z-margin-15{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <form>
+        <header class="form-header">欢迎登陆</header>
+        <div class="z-form">
+            <div class="z-group clear-fix">
+                <label class="z-form-lab" for="first-name">账号</label>
+                <input class="z-form-inp" autocomplete="off" type="text" id="first-name" placeholder="请输入手机号码">
+                <div class="outline bg-outline"></div>
+            </div>
+            <div class="z-group clear-fix">
+                <label class="z-form-lab" for="first-pass">密码</label>
+                <input class="z-form-inp" autocomplete="off" type="password" id="first-pass" placeholder="请输入密码">
+                <div class="outline bg-outline"></div>
+            </div>
+        </div>
+        <div class="btn-box">
+            <button class="btn z-margin-15">
+                登陆
+            </button>
+            <button class="btn ">
+                微信登陆
+            </button>
+        </div>
+    </form>
+</div>
+<div class="foot">
+    <div class="z-box">
+        <a href="">找回密码</a>
+        <a href="">注册</a>
+    </div>
+</div>
+</body>
+</html>
