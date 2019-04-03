@@ -2,5 +2,3 @@
 /.idea/
 /node_learn.iml
 /node_modules/
-!/node_modules/
-/node_modules/.bin/

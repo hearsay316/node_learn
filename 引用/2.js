@@ -1,3 +1,6 @@
-let a = [1,2,3,[1,2]];
-let b = a.flat(1);
-console.log(a,b);
+let data ={};
+let temp =data;
+temp['data']={};
+console.log(data);
+temp=temp['data'];
+console.log(data);

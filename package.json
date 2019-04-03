@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "prettier": "1.15.3"
+    "prettier": "1.15.3",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
   }
 }
